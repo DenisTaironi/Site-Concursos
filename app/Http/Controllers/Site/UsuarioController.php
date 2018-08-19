@@ -24,7 +24,9 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        //
+        $title = 'Cadastro de Usuário';
+
+        return view('site.usuarios.cadastro_usuario', compact('title'));
     }
 
     /**
