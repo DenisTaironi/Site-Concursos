@@ -4,9 +4,17 @@ namespace App\Http\Controllers\Site;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Site\Usuario;
 
 class UsuarioController extends Controller
 {
+    private $usuario;
+
+    public function __construct(Usuario $usuario)
+    {
+        $this->usuario = $usuario;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        return "Tela de usuario";
+        return "Tela de usuario após cadastro ou login";
     }
 
     /**
@@ -25,8 +33,9 @@ class UsuarioController extends Controller
     public function create()
     {
         $title = 'Cadastro de Usuário';
+        $sexo = ['Masculino','Feminino'];
 
-        return view('site.usuarios.cadastro_usuario', compact('title'));
+        return view('site.usuarios.cadastro_usuario', compact('title','sexo'));
     }
 
     /**
@@ -37,7 +46,16 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Pega todos os dados que vem do formulario exceto o campo tokken
+        $dataForm = $request->except('token');
+
+        //Faz o cadstro no banco
+        $insert = $this->usuario->insert($dataForm);
+
+        if( $insert )     
+            return redirect()->route('usuario.index');
+        else
+            return redirect()->back();
     }
 
     /**
