@@ -1,5 +1,13 @@
 .title-pg{
-	font-size: 5em;
+	font-size: 2em;
 	font-weight: 10;
+	padding-bottom: 50px;
 
 }
+
+.control-label{
+
+	font-size: .5em;
+	
+}
+
