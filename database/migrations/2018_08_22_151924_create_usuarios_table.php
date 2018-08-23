@@ -36,12 +36,12 @@ class CreateUsuariosTable extends Migration
             $table->string('usu_logradouro', 100); 
             $table->string('usu_endereco', 100); 
             $table->string('usu_end_num', 100); 
-            $table->string('usu_end_complemento', 100); 
+            $table->string('usu_end_complemento', 100)->nullable($value = true); 
             $table->string('usu_bairro', 100); 
             $table->string('usu_uf', 100); 
             $table->string('usu_municipio', 100); 
             $table->string('usu_tel', 100);
-            $table->string('usu_tel2', 100); 
+            $table->string('usu_tel2', 100)->nullable($value = true); 
             $table->string('usu_email', 100); 
             $table->boolean('usu_autorizacao'); 
             $table->string('usu_naturalidade', 100);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Site\Usuario;
+use App\Http\Requests\Site\UsuarioFormRequest;
 
 class UsuarioController extends Controller   
 {
@@ -57,7 +58,7 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UsuarioFormRequest $request)
     {
         //Pega todos os dados que vem do formulario exceto o campo tokken
         $dataForm = $request->all();        
@@ -72,6 +73,19 @@ class UsuarioController extends Controller
         //$dataForm['dados_usu_id'] = $dados_usuario->id;
        
        // $dados_usuario = $usuario->dados_usuario()->create($dataForm);
+
+        //valida os dados
+        //$this->validate($request, $this->usuario->rules);
+        //outra maneira de validar dados
+        /*
+        $validate = validator($dataForm, $this->usuario->rules);
+        if($validate->fails()){
+            return redirect()
+                    ->route('usuario.create')
+                    ->withErrors($validate)
+                    ->withInput();
+        }
+        */
 
         //Faz o cadastro no banco
         $insert = $this->usuario->create($dataForm);

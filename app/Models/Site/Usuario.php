@@ -43,10 +43,10 @@ class Usuario extends Model
 		    	'usu_tel2', 
 		    	'usu_email', 
 		    	'usu_autorizacao', 
-		    	'usu_nome', 
 		    	'usu_naturalidade'
     ];
-	
+
+   	
 	/*
     protected $hidden = [
         

@@ -3,6 +3,15 @@
 
 <h1 class="title-pg">formulario de cadastro<h1>
 
+@if( isset($errors) && count($errors) > 0)
+<div  class="alert alert-danger">
+	@foreach( $errors->all() as $error)
+	<p>{{$error}}</p>
+	@endforeach
+</div>
+@endif
+
+
 <form class="form" method="post" action="{{route('usuario.store')}}">
 	<!--token para impedir ataque de csrf-->
 	{!! csrf_field() !!}
@@ -14,7 +23,7 @@
 				<span class="control-label">Nome</span>
 			</div>
   			<div class="col">
-  				<input type="text" name="usu_nome" class="form-control">
+  				<input type="text" name="usu_nome" class="form-control" value="{{old('usu_nome')}}">
   			</div>
   			<div class="col">
   				<span class="control-label">CEP</span>
@@ -36,7 +45,7 @@
   			</div>
   			<div class="col">
   				<select name="usu_logradouro" class="form-control">
-				<option>Selecione</option>
+				<option value="">Selecione</option>
 				@foreach($logradouro as $logradouro)
 				<option value="{{$logradouro}}">{{$logradouro}}</option>
 				@endforeach
@@ -116,7 +125,7 @@
   			</div>
   			<div class="col">
   				<select name="usu_uf" class="form-control">
-				<option>Selecione</option>
+				<option value="">Selecione</option>
 				@foreach($uf as $uf)
 				<option value="{{$uf}}">{{$uf}}</option>
 				@endforeach
@@ -130,7 +139,7 @@
 			</div>
   			<div class="col">
   				<select name="usu_org_emissor_rg" class="form-control">
-				<option>Selecione</option>
+				<option value="">Selecione</option>
 				@foreach($orgao_emissor as $orgao_emissor)
 				<option value="{{$orgao_emissor}}">{{$orgao_emissor}}</option>
 				@endforeach
@@ -141,7 +150,7 @@
   			</div>
   			<div class="col">
   				<select name="usu_municipio" class="form-control">
-				<option>Selecione</option>
+				<option value="">Selecione</option>
 				@foreach($municipio as $municipio)
 				<option value="{{$municipio}}">{{$municipio}}</option>
 				@endforeach
@@ -155,7 +164,7 @@
 			</div>
   			<div class="col">
   				<select name="usu_uf_orgao_emissor_rg" class="form-control">
-				<option>Selecione</option>
+				<option value="">Selecione</option>
 				@foreach($uf_orgao_emissor as $uf_orgao_emissor)
 				<option value="{{$uf_orgao_emissor}}">{{$uf_orgao_emissor}}</option>
 				@endforeach
@@ -190,7 +199,7 @@
 			</div>
   			<div class="col">
   				<select name="usu_nacionalidade" class="form-control">
-				<option>Selecione</option>
+				<option value="">Selecione</option>
 				@foreach($nacionalidade as $nacionalidade)
 				<option value="{{$nacionalidade}}">{{$nacionalidade}}</option>
 				@endforeach
@@ -210,7 +219,7 @@
 			</div>
   			<div class="col-md-3">
   				<select name="usu_naturalidade" class="form-control">
-				<option>Selecione</option>
+				<option value="">Selecione</option>
 				@foreach($naturalidade as $naturalidade)
 				<option value="{{$naturalidade}}">{{$naturalidade}}</option>
 				@endforeach
@@ -231,7 +240,7 @@
 			</div>
   			<div class="col">
   				<select name="usu_sexo" class="form-control">
-				<option>Selecione</option>
+				<option value="">Selecione</option>
 				@foreach($sexo as $sexo)
 				<option value="{{$sexo}}">{{$sexo}}</option>
 				@endforeach
@@ -251,7 +260,7 @@
 			</div>
   			<div class="col">
   				<select name="usu_estado_civil" class="form-control">
-				<option>Selecione</option>
+				<option value="">Selecione</option>
 				@foreach($estado_civil as $estado_civil)
 				<option value="{{$estado_civil}}">{{$estado_civil}}</option>
 				@endforeach
@@ -271,7 +280,7 @@
 			</div>
   			<div class="col-md-3">
   				<select name="usu_raca" class="form-control">
-				<option>Selecione</option>
+				<option value="">Selecione</option>
 				@foreach($raca as $raca)
 				<option value="{{$raca}}">{{$raca}}</option>
 				@endforeach
@@ -289,7 +298,7 @@
 			</div>
   			<div class="col-md-3">
   				<select name="usu_escolaridade" class="form-control">
-				<option>Selecione</option>
+				<option value="">Selecione</option>
 				@foreach($escolaridade as $escolaridade)
 				<option value="{{$escolaridade}}">{{$escolaridade}}</option>
 				@endforeach
