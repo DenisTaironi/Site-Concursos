@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Site\Usuario;
 
-class UsuarioController extends Controller
+class UsuarioController extends Controller   
 {
     private $usuario;
+    
 
     public function __construct(Usuario $usuario)
     {
-        $this->usuario = $usuario;
+        $this->usuario = $usuario;       
     }
 
     /**
@@ -33,9 +34,21 @@ class UsuarioController extends Controller
     public function create()
     {
         $title = 'Cadastro de Usuário';
+        $orgao_emissor = ['SSP','Outro'];
+        $uf_orgao_emissor = ['CE','BA','Outro'];
+        $nacionalidade = ['Brasileiro','Outro'];
+        $naturalidade = ['Cearense','Outro'];
         $sexo = ['Masculino','Feminino'];
+        $estado_civil = ['Solteiro','Casado','Viúvo','Separado'];
+        $raca = ['Branca','Negra'];
+        $escolaridade = ['Fundamental Completo','Outro'];
+        $logradouro = ['Rua','Travessa'];
+        $uf = ['CE','BA','SP'];
+        $municipio = ['Fortaleza','Outro'];
+       
 
-        return view('site.usuarios.cadastro_usuario', compact('title','sexo'));
+        return view('site.usuarios.cadastro_usuario', 
+                compact('title','orgao_emissor','uf_orgao_emissor','nacionalidade','naturalidade','sexo','estado_civil','raca','escolaridade','logradouro','uf','municipio'));
     }
 
     /**
@@ -47,15 +60,26 @@ class UsuarioController extends Controller
     public function store(Request $request)
     {
         //Pega todos os dados que vem do formulario exceto o campo tokken
-        $dataForm = $request->except('token');
+        $dataForm = $request->all();        
 
-        //Faz o cadstro no banco
-        $insert = $this->usuario->insert($dataForm);
+        //debugador
+        //dd($dataForm);
+        //testa se o termo de autorização esta marcado
+        $dataForm ['usu_autorizacao'] = ( !isset ($dataForm ['usu_autorizacao'])) ? 0 : 1;
+
+       // $dados_usuario = Dados_usuario::create($dataForm);
+
+        //$dataForm['dados_usu_id'] = $dados_usuario->id;
+       
+       // $dados_usuario = $usuario->dados_usuario()->create($dataForm);
+
+        //Faz o cadastro no banco
+        $insert = $this->usuario->create($dataForm);
 
         if( $insert )     
             return redirect()->route('usuario.index');
         else
-            return redirect()->back();
+            return redirect()->route('usuario.create');
     }
 
     /**
@@ -89,7 +113,7 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return "entrou no update";
     }
 
     /**
@@ -101,5 +125,17 @@ class UsuarioController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function teste()
+    {
+        $usuario = Usuario::where('usu_id','1')->get()->first();
+
+        echo $usuario->usu_nome;
+        echo $usuario->usu_login;
+        echo $usuario->usu_email;
+        echo $usuario->usu_cpf;
+        return "Tela de teste";
     }
 }

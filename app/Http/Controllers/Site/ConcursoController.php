@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Site\Concurso;
 
 class ConcursoController extends Controller
 {
@@ -14,7 +15,7 @@ class ConcursoController extends Controller
      */
     public function index()
     {
-       
+      
     }
 
     /**
@@ -24,7 +25,7 @@ class ConcursoController extends Controller
      */
     public function create()
     {
-        //
+         return "porra do create do ConcursoController";
     }
 
     /**
