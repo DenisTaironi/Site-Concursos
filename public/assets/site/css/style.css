@@ -1,13 +1,30 @@
-.title-pg{
+.title-pg {
 	font-size: 2em;
 	font-weight: 10;
 	padding-bottom: 50px;
 
 }
 
-.control-label{
+.control-label {
 
 	font-size: .4em;
+	
+}
+
+.alerta {
+
+	font-size: .4em;
+
+}
+
+.slick-prev {
+	left: 0;
+	z-index: 999;
+
+}
+
+.slick-next {
+	right: : 0;
 	
 }
 

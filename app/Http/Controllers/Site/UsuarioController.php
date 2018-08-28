@@ -87,12 +87,26 @@ class UsuarioController extends Controller
         }
         */
 
+
+
+
         //Faz o cadastro no banco
         $insert = $this->usuario->create($dataForm);
 
         if( $insert )     
             return redirect()->route('usuario.index');
         else
+            /*
+            $validate = validator($dataForm);
+            $errors = $validate->errors();
+            $errorMessage = '';
+            foreach ($rules as $key => $value) {
+                if ($errors->has($key)) {
+                    $errorMessage = $errors->first($key);
+                    break;
+                }
+            }
+            */
             return redirect()->route('usuario.create');
     }
 
