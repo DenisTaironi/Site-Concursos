@@ -84,4 +84,30 @@ class SiteController extends Controller
     {
         //
     }
+
+    public function about()
+    {
+        return view('site.menu.about');
+    }
+
+     public function artigos()
+    {
+        return view('site.menu.artigos');
+    }
+     public function eventos()
+    {
+        return view('site.menu.eventos');
+    }
+     public function fale_conosco()
+    {
+        return view('site.menu.fale_conosco');
+    }
+     public function noticias()
+    {
+        return view('site.menu.noticias');
+    }
+     public function videos()
+    {
+        return view('site.menu.videos');
+    }
 }

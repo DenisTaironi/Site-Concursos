@@ -24,7 +24,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        return "Tela de usuario após cadastro ou login";
+        return view('site.usuarios.login_usuario');
     }
 
     /**
