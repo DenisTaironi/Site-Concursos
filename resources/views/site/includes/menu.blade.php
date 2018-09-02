@@ -5,12 +5,12 @@
 		   <li><a href="{{route('about')}}">Quem Somos</a></li>
 		   <li class='active'><a href='#'>Concursos</a>
 		      <ul>
-		         <li><a href='{{route('home')}}'>Em Andamento</a></li>         
-		         <li><a href='{{route('home')}}'>Realizados</a>
-		            <ul>
+		         <li><a href='{{route('concursos_andamento')}}'>Em Andamento</a></li>         
+		         <li><a href='{{route('concursos_realizado')}}'>Realizados</a>
+		            <!--<ul>
 		               <li><a href='{{route('home')}}'>Sub Product</a></li>
 		               <li><a href='{{route('home')}}'>Sub Product</a></li>
-		            </ul>
+		            </ul> -->
 		         </li>
 		      </ul>
 		   </li>

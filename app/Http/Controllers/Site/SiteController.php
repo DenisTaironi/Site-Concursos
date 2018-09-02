@@ -110,4 +110,12 @@ class SiteController extends Controller
     {
         return view('site.menu.videos');
     }
+    public function concursos_andamento()
+    {
+        return view('site.menu.concursos_andamento');
+    }
+    public function concursos_realizado()
+    {
+        return view('site.menu.concursos_realizado');
+    }
 }
